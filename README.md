@@ -44,8 +44,8 @@ A secure password manager built with Next.js, TypeScript, and MongoDB featuring 
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd password-vault
+   git clone https://github.com/jason21333/Secure-Password-Generator-secure-Valt-.git
+   cd Secure-Password-Generator-secure-Valt-
    ```
 
 2. **Install dependencies**
