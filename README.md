@@ -5,7 +5,7 @@ A secure password manager built with Next.js, TypeScript, and MongoDB featuring 
 ## Features
 
 ### 🔐 Security First
-- **Client-side encryption** - Your passwords are encrypted before leaving your browser
+- **Client-side encryption** - passwords are encrypted before leaving your browser
 - **Master password protection** - Only you can decrypt your data
 - **No plaintext storage** - Server never sees your actual passwords
 - **JWT authentication** - Secure session management
