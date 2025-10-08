@@ -58,9 +58,25 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
 
   } catch (error: any) {
     console.error('Signup error:', error);
+    
+    // More specific error messages for debugging
+    if (error.code === 11000) {
+      return NextResponse.json({
+        success: false,
+        error: 'User already exists with this email'
+      }, { status: 400 });
+    }
+    
+    if (error.name === 'ValidationError') {
+      return NextResponse.json({
+        success: false,
+        error: Object.values(error.errors).map((err: any) => err.message).join(', ')
+      }, { status: 400 });
+    }
+    
     return NextResponse.json({
       success: false,
-      error: 'Internal server error'
+      error: `Internal server error: ${error.message || 'Unknown error'}`
     }, { status: 500 });
   }
 }

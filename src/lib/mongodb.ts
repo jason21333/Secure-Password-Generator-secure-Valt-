@@ -19,14 +19,17 @@ if (!global.mongoose) {
 
 async function connectDB() {
   if (!MONGODB_URI) {
+    console.error('MONGODB_URI is not defined');
     throw new Error('Please define the MONGODB_URI environment variable');
   }
 
   if (cached.conn) {
+    console.log('Using existing MongoDB connection');
     return cached.conn;
   }
 
   if (!cached.promise) {
+    console.log('Creating new MongoDB connection...');
     const opts = {
       bufferCommands: false,
     };
@@ -37,13 +40,18 @@ async function connectDB() {
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
     }).then((mongoose) => {
+      console.log('MongoDB connected successfully');
       return mongoose;
+    }).catch((error) => {
+      console.error('MongoDB connection error:', error);
+      throw error;
     });
   }
 
   try {
     cached.conn = await cached.promise;
   } catch (e) {
+    console.error('Failed to connect to MongoDB:', e);
     cached.promise = null;
     throw e;
   }
