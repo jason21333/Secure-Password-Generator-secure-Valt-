@@ -101,6 +101,8 @@ temp/
 
 # Docker
 .dockerignore
+docker-compose.yml
+docker-compose.*.yml
 
 # Development files
 docker-compose.dev.yml
